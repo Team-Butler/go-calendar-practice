@@ -1,0 +1,5 @@
+# Batch Files
+*.bat
+
+# Excute files
+*.exe
