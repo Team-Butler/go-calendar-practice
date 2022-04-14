@@ -1,4 +1,4 @@
-package main
+package services
 
 import (
 	"net/http"
@@ -8,13 +8,13 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPingRoute(t *testing.T) {
-	router := setupRouter()
+func TestPingServer(t *testing.T) {
+	server := setupServer()
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
-	router.ServeHTTP(w, req)
+	server.ServeHTTP(w, req)
 
-	assert.Equal(t, 200, w.Code)
+	assert.Equal(t, http.StatusOK, w.Code)
 	assert.Equal(t, "pong", w.Body.String())
 }
