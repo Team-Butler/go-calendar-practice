@@ -1,9 +1,9 @@
 package main
 
-import "go-calendar-practice/go-calendar-practice/go-calendar/services"
+import "go-calendar-practice/go-calendar-practice/go-calendar/server"
 
 func main() {
-	const PORT = ":3000"
+	const PORT = ":8080"
 
-	services.LaunchServer(PORT)
+	server.Launch(PORT)
 }
