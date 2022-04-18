@@ -1,7 +1,8 @@
 # go-calendar-practice
 
 
-## File Tree 
+## File Tree (Non-Fixed)
+
 ```
 │  .gitignore
 │  cmd.exe
@@ -14,12 +15,14 @@
 ├─  config
 │    └─ mysql.json
 └─  pkg
-     ├─ controllers
-     │      example.go
+     ├─ controller
+     │  └─ example.go
      ├─ db
      │  └─ mysql.go
-     ├─ middlewares
+     ├─ middleware
      │  └─ auth.go
+     ├─ entity
+     │  └─ example.go
      ├─ models
      │  └─ example.go
      ├─ routers
