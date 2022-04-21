@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func LoadApis(router *gin.Engine) {
+func LoadAPIs(router *gin.Engine) {
 	base.AddController(router)
 
 	example.AddController(router)

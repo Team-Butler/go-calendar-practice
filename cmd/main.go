@@ -10,7 +10,7 @@ import (
 func main() {
 	router := gin.Default()
 
-	loaders.LoadApis(router)
+	loaders.LoadAPIs(router)
 
 	err := router.Run(":3000")
 	if err != nil {
