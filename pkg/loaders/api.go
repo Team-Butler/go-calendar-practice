@@ -6,6 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func LoadApis(r *gin.Engine) {
-	example.ExampleController(r)
+func LoadApis(router *gin.Engine) {
+	example.ExampleController(router)
 }

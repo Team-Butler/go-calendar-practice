@@ -4,11 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ExampleController(r *gin.Engine) {
-	exampleRouter := r.Group("/example")
+func ExampleController(router *gin.Engine) {
+	exampleRouter := router.Group("/example")
 
-	exampleRouter.GET("/", func(c *gin.Context) {
+	exampleRouter.GET("/", func(ctx *gin.Context) {
 		status, data := GetExampleHelloWorld()
-		c.JSON(status, data)
+		ctx.JSON(status, data)
 	})
 }
