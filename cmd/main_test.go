@@ -10,7 +10,7 @@ import (
 
 func TestSetupServer(t *testing.T) {
 	// Server Setup
-	server := setupServer()
+	server := setupServer(DEBUG_MODE)
 
 	// response test
 	w := httptest.NewRecorder()
