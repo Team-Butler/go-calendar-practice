@@ -16,6 +16,5 @@ func TestSetupServer(t *testing.T) {
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/", nil)
 	server.ServeHTTP(w, req)
-
-	assert.Equal(t, http.StatusOK, w.Code)
+	assert.Equal(t, w.Code, http.StatusOK)
 }
