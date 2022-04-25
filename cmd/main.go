@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-calendar-practice/pkg/loaders"
+	"go-calendar-practice/pkg/middlewares/logger"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,9 +30,10 @@ func main() {
 func setupServer(mode string) *gin.Engine {
 	gin.SetMode(mode)
 
-	router := gin.Default()
+	server := gin.New()
+	server.Use(gin.Recovery(), logger.Logger())
 
-	loaders.LoadAPIs(router)
+	loaders.LoadAPIs(server)
 
-	return router
+	return server
 }
