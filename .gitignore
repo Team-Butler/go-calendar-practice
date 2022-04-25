@@ -3,3 +3,7 @@
 
 # Excute files
 *.exe
+
+# Log files
+*.log
+!sample.log
