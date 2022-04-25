@@ -2,7 +2,6 @@ package logger
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,21 +16,17 @@ func Logger() gin.HandlerFunc {
 
 var logFormatter = func(param gin.LogFormatterParams) string {
 	const serviceName = "TASKAT"
-	var statusColor, methodColor, resetColor string
+	var serviceColor, statusColor, methodColor, resetColor string
 
 	if param.IsOutputColor() {
+		serviceColor = cyan
 		statusColor = param.StatusCodeColor()
 		methodColor = param.MethodColor()
 		resetColor = param.ResetColor()
 	}
 
-	if param.Latency > time.Minute {
-		// Truncate in a golang < 1.8 safe way
-		param.Latency = param.Latency - param.Latency%time.Second
-	}
-
 	return fmt.Sprintf("%s[%s]%s %v |%s %3d %s| %13v | %15s |%s %-7s %s %#v\n%s",
-		cyan, serviceName, resetColor,
+		serviceColor, serviceName, resetColor,
 		param.TimeStamp.Format("2006/01/02 - 15:04:05"),
 		statusColor, param.StatusCode, resetColor,
 		param.Latency,

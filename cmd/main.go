@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"go-calendar-practice/pkg/loaders"
 	"go-calendar-practice/pkg/middlewares/logger"
+	"io"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,6 +30,8 @@ func main() {
 }
 
 func setupServer(mode string) *gin.Engine {
+	setupLogWriter()
+
 	gin.SetMode(mode)
 
 	server := gin.New()
@@ -36,4 +40,9 @@ func setupServer(mode string) *gin.Engine {
 	loaders.LoadAPIs(server)
 
 	return server
+}
+
+func setupLogWriter() {
+	f, _ := os.Create("logs/ginlog.log")
+	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
