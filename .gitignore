@@ -3,3 +3,6 @@
 
 # Excute files
 *.exe
+
+# config files
+config/
