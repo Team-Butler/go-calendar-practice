@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"go-calendar-practice/pkg/loaders"
+	"go-calendar-practice/pkg/middlewares/logger"
+	"io"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,11 +30,19 @@ func main() {
 }
 
 func setupServer(mode string) *gin.Engine {
+	setupLogWriter()
+
 	gin.SetMode(mode)
 
-	router := gin.Default()
+	server := gin.New()
+	server.Use(gin.Recovery(), logger.Logger())
 
-	loaders.LoadAPIs(router)
+	loaders.LoadAPIs(server)
 
-	return router
+	return server
+}
+
+func setupLogWriter() {
+	f, _ := os.Create("logs/ginlog.log")
+	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
